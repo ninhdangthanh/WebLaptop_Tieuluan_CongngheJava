@@ -31,11 +31,11 @@
                             </a>
                         </div>
                         <div class="search_header w-25">
-                            <div class="search_header_wrap">
-                                <input class="search_header_input" id="searchingPage" type="text"
+                            <form  action="${pageContext.request.contextPath}/search_laptop" method="post" class="search_header_wrap">
+                                <input class="search_header_input" id="searchingPage" name="searchingPage" type="text"
                                     placeholder="Nhập tên sản phẩm">
-                                <i class="fa-solid fa-magnifying-glass search_header_icon"></i>
-                            </div>
+                                <button type="submit"><i class="fa-solid fa-magnifying-glass search_header_icon"></i></button>
+                            </form>
                         </div>
                         <div class="advertisement_header w-25">
                             <div class="advertisement_header_wrap">
@@ -71,12 +71,12 @@
                                     </div>
                                     <div class="">Giỏ hàng</div>
                                 </div>
-                                <div class="cart_admin_header_div">
+                                <a href="login"  class="cart_admin_header_div">
                                     <div class="cart_header_icon">
                                         <i class="fa-solid fa-circle-user cart_admin_header_div_faw"></i>
                                     </div>
                                     <div class="">Tài khoản</div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -88,13 +88,13 @@
                             <a href="all_product" class="bot_header_item_link">Tất cả sản phẩm</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Dell" class="bot_header_item_link">Laptop Dell</a>
+                            <a href="laptop_trademark?trademark=Dell&series=noSeries" class="bot_header_item_link">Laptop Dell</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Acer" class="bot_header_item_link">Laptop Acer</a>
+                            <a href="laptop_trademark?trademark=Acer&series=noSeries" class="bot_header_item_link">Laptop Acer</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Asus" class="bot_header_item_link">Laptop Asus</a>
+                            <a href="laptop_trademark?trademark=Asus&series=noSeries" class="bot_header_item_link">Laptop Asus</a>
                         </div>
                     </div>
                 </div>
@@ -466,6 +466,7 @@
                     color: #1e73ac;
                     color: #1e73ac;
                     position: relative;
+                    text-decoration: none;
                 }
 
                 .cart_admin_header_div_faw {

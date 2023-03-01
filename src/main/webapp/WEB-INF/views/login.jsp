@@ -11,14 +11,13 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
                     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
                     crossorigin="anonymous" referrerpolicy="no-referrer" />
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-                    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-                    crossorigin="anonymous">
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-                    crossorigin="anonymous"></script>
                 <link rel="icon" href="https://laptop-react-web.web.app/static/media/logo_tran_phat.d761b569.png">
-                <title>Search Laptop</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+			        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+			    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+			        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+			        crossorigin="anonymous"></script>
+                <title>Login to the laptop management page</title>
             </head>
 
             <body>
@@ -26,7 +25,7 @@
                     <div class="top_header container">
                         <div class="logo_header w-25">
                             <a href="/TieuluanJava_WebLaptop">
-                                <img src=" https://laptop-react-web.web.app/static/media/logo_tran_phat.d761b569.png"
+                                <img src="https://laptop-react-web.web.app/static/media/logo_tran_phat.d761b569.png"
                                     alt="">
                             </a>
                         </div>
@@ -71,7 +70,7 @@
                                     </div>
                                     <div class="">Giỏ hàng</div>
                                 </div>
-                                <a href="login"  class="cart_admin_header_div">
+                                <a href="login" class="cart_admin_header_div">
                                     <div class="cart_header_icon">
                                         <i class="fa-solid fa-circle-user cart_admin_header_div_faw"></i>
                                     </div>
@@ -88,73 +87,38 @@
                             <a href="all_product" class="bot_header_item_link">Tất cả sản phẩm</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Dell&series=noSeries" class="bot_header_item_link">Laptop Dell</a>
+                            <a href="laptop_trademark?trademark=Dell&series=noSeries"
+                                class="bot_header_item_link">Laptop
+                                Dell</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Acer&series=noSeries" class="bot_header_item_link">Laptop Acer</a>
+                            <a href="laptop_trademark?trademark=Acer&series=noSeries"
+                                class="bot_header_item_link">Laptop
+                                Acer</a>
                         </div>
                         <div class="bot_header_item">
-                            <a href="laptop_trademark?trademark=Asus&series=noSeries" class="bot_header_item_link">Laptop Asus</a>
+                            <a href="laptop_trademark?trademark=Asus&series=noSeries"
+                                class="bot_header_item_link">Laptop
+                                Asus</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="body_search container">
-                    <h2 class="body_search_title">
-                        Trang tìm kiếm sản phẩm
-                    </h2>
-                    <h5 class="body_search_content">Kết quả tìm kiếm cho "${searchInputValue}"</h5>
-                </div>
-
-                <div class="body_laptop_products container">
-                    <c:forEach items="${searchLaptops}" var="laptop">
-                        <a href="laptop_detail?id=${laptop.id}" class="body_products_item_right_item">
-                            <img src="${laptop.link_img}" alt="">
-                            <div class="body_products_item_right_item_name">
-                                ${laptop.getName()}
-                            </div>
-                            <div class="body_products_item_right_item_price">
-                                <div class="body_products_item_right_item_price_left">
-                                    ${laptop.getPrice()}
-                                </div>
-                                <div class="body_products_item_right_item_price_right">
-                                    ${laptop.getPast_price()}
-                                </div>
-                            </div>
-                            <div class="body_products_item_right_item_rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <div>10 đánh giá</div>
-                            </div>
-                            <div class="body_products_item_right_item_specification">
-                                <div class="body_products_item_right_item_specification_detail">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    ${laptop.getScreen_compact()}
-                                </div>
-                                <div class="body_products_item_right_item_specification_detail">
-                                    <i class="fa-solid fa-microchip"></i>
-                                    ${laptop.getCpu_compact()}
-                                </div>
-                                <div class="body_products_item_right_item_specification_detail">
-                                    <i class="fa-solid fa-sim-card"></i>
-                                    ${laptop.getRam_compact()}
-                                </div>
-                                <div class="body_products_item_right_item_specification_detail">
-                                    <i class="fa-solid fa-database"></i>
-                                    ${laptop.getMemory_compact()}
-                                </div>
-                                <div class="body_products_item_right_item_specification_detail">
-                                    <i class="fa-solid fa-flag-usa"></i>
-                                    NVIDIA
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-                </div>
-                
+				<h3 class="login_page_title_container">Đăng nhập để đến trang quản lý Web Laptop</h3>
+			    <div class="body_login container_login_form">
+			        <form action="${pageContext.request.contextPath}/user_login" method="post">
+			            <div class="mb-3">
+			                <label for="exampleInputUsername" class="form-label"><strong>Email</strong></label>
+			                <input placeholder="Nhập username" type="text" name="email" class="form-control" id="exampleInputUsername">
+			            </div>
+			            <div class="mb-3">
+			                <label for="exampleInputPassword" class="form-label"><strong>Password</strong></label>
+			                <input type="password" placeholder="Nhập password" class="form-control" name="password" id="exampleInputPassword">
+			            </div>
+			            <button type="submit" class="btn btn-primary btn-form-login-submit">Đăng nhập</button>
+			        </form>
+			        <div class="login_error">${loginFailed}</div>
+			    </div>
 
                 <div class="footer">
                     <div class="footer_info container">
@@ -397,7 +361,6 @@
                     color: #1e73ac;
                     color: #1e73ac;
                     position: relative;
-                    text-decoration: none;
                 }
 
                 .cart_admin_header_div_faw {
@@ -501,7 +464,10 @@
                     margin-bottom: 30px;
                     font-size: 2rem;
                 }
-
+                .login_error {
+                	text-align: center;
+    				color: red;
+                }
                 .evaluate_item_img {
                     width: 50%;
                     border-radius: 50%;
@@ -794,343 +760,20 @@
                     border-radius: 5px;
                     background-color: #f8f9fa;
                 }
-
-                .body_banner {
-                    display: flex;
-                    margin-bottom: 40px;
-                }
-
-                .body_banner div {
-                    width: 50%;
-                    padding: 6px;
-                }
-
-                .body_banner div img {
-                    width: 100%;
-                }
-
-                .body_nav {
-                    margin-top: 20px;
-                    margin-bottom: 30px;
-                }
-
-                .nav_home {
-                    color: #000;
-                    text-decoration: none;
-                }
-
-                .nav_home:hover {
-                    color: blue;
-                    text-decoration: underline;
-                }
-
-                .body_laptop_title {
-                    font-size: 35px;
-                    font-weight: bold;
-                    margin-bottom: 20px;
-                }
-
-                .body_laptop_type {
-                    display: flex;
-                    margin-top: 10px;
-                    margin-bottom: 20px;
-                }
-
-                .body_laptop_type_item {
-                    border: 1px solid #adacac;
-                    cursor: pointer;
-                    display: flex;
-                    padding: 10px 28px;
-                    margin-right: 16px;
-                    transition: all 0.3s linear;
-                    align-items: center;
-                    font-weight: bold;
-                    border-radius: 5px;
-                    justify-content: center;
-                }
-
-                .body_laptop_type_item:hover {
-                    color: white;
-                    background-color: #0078dc;
-                }
-
-                .body_price_sort {
-                    margin: 8px;
-                    width: 150px !important;
-                    margin-bottom: 16px;
-                }
-
-                .body_price_sort_wrap {
-                    display: flex;
-                    justify-content: flex-end;
-                    border-bottom: 1px solid #666;
-                    margin-top: 10px;
-                    margin-bottom: 20px;
-                }
-
-                .body_products_item_right_item {
-                    max-width: 25%;
-                    flex-basis: 25%;
-                    padding: 20px 20px 30px;
-                    background-color: #f8f9fa;
-                }
-
-                .body_laptop_products {
-                    display: flex;
-                    flex-wrap: wrap;
-                    margin-bottom: 60px;
-                }
-
-                .body_price_sort_wrap_btn {
-                    margin-bottom: 10px;
-                    font-weight: bold !important;
-                }
-
-                .dplfl {
-                    display: flex;
-                    align-items: center;
-                }
-
-                .body_title_name {
-                    font-size: 1.75rem;
-                    padding: 16px 0;
-                    width: 40%;
-                }
-
-                .body_title_rating_star i {
-                    color: #ffc120;
-                }
-
-                .body_title_rating_star div {
-                    padding: 4px 10px;
-                    border: 1px solid #888;
-                    margin-left: 8px;
-                    margin-right: 30px;
-                }
-
-                .body_title_name_rating_question div {
-                    color: #007bff;
-                    cursor: pointer;
-                    font-size: 14px;
-                }
-
-                .body_title_name_rating_question span {
-                    padding: 0 8px;
-                }
-
-                .body_title {
-                    padding-bottom: 16px;
-                    border-bottom: 1px solid rgb(182, 182, 182);
-                    margin-bottom: 16px;
-                }
-
-                .nav_home {
-                    padding: 0 6px;
-                }
-
-                .body_wrap {
-                    display: flex;
-                }
-
-                .body_product_left {
-                    width: 41%;
-                    padding: 16px;
-                }
-
-                .body_product_mid {
-                    width: 41%;
-                    padding: 16px;
-                }
-
-                .body_product_right {
-                    width: 18%;
-                    padding: 16px;
-                }
-
-                .body_product_left_img {
-                    width: 100%;
-                    margin-bottom: 60px;
-                }
-
-                .body_product_left_img img {
-                    width: 100%;
-                }
-
-                .body_product_left_promotion_item {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 8px;
-                }
-
-                .body_product_left_promotion_item i {
-                    color: #13bf13;
-                    margin-right: 4px;
-                    font-size: 16px;
-                }
-
-                .body_product_left_promotion {
-                    border: 1px solid #ccc;
-                    padding: 25px 10px 5px;
-                    position: relative;
-                    font-size: 16px;
-                    border-radius: 4px;
-                }
-
-                .body_product_left_promotion_sticker i {
-                    color: red;
-                    font-size: 22px;
-                    margin-right: 8px;
-                }
-
-                .body_product_left_promotion_sticker {
-                    background-color: #f1f1f1;
-                    display: inline-block;
-                    top: -24px;
-                    left: 20px;
-                    border: 1px solid #ccc;
-                    display: inline-flex;
-                    padding: 6px 14px;
-                    position: absolute;
-                    align-items: center;
-                    font-weight: bold;
-                    border-radius: 4px;
-                }
-
-                .body_product_mid_price_container {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 15px 15px;
-                    margin-bottom: 35px;
-                    background-color: #efedee;
-                }
-
-                .body_product_mid_price_now_price {
-                    color: #ea0000;
-                    font-size: 24px;
-                    line-height: 1;
-                    padding-bottom: 10px;
-                }
-
-                .body_product_mid_price_last_price {
-                    color: #BDBDBD;
-                    font-size: 14px;
-                    font-weight: normal;
-                    margin-left: 5px;
-                    text-decoration: line-through;
-                }
-
-                .body_product_mid_price_vat_title {
-                    font-size: 14px;
-                    padding-bottom: 10px;
-                }
-
-                .body_product_mid_price_vat_stocking {
-                    color: #25b925;
-                    font-size: 18px;
-                }
-
-                .product_mid_detail_product strong {
-                    padding-right: 4px;
-                }
-
-                .product_mid_detail_product {
-                    padding-bottom: 14px;
-                }
-
-                .btn-danger-buying {
-                    width: 100%;
-                    margin: 14px 0;
-                }
-
-                .btn-danger-carting {
-                    width: 100%;
-                }
-
-                .body_product_mid_danger_text {
-                    color: red;
-                    font-size: 18px;
-                    text-align: center;
-                    padding-top: 14px;
-                }
-
-                .product_right_insurance_item {
-                    display: flex;
-                    font-size: 13px;
-                    margin-bottom: 10px;
-                }
-
-                .product_right_insurance_item img {
-                    color: #1e73ac;
-                    font-size: 18px;
-                    margin-top: 2px;
-                    margin-right: 6px;
-                    width: 26px;
-                }
-
-                .product_right_insurance_item i {
-                    color: #1e73ac;
-                    font-size: 18px;
-                    margin-top: 2px;
-                    margin-right: 6px;
-                    width: 26px;
-                }
-
-                .product_right_insurance_item div {
-                    font-size: 13px;
-                }
-
-                .product_right_insurance {
-                    border: 1px solid #ccc;
-                    padding: 4px;
-                    padding-top: 8px;
-                    border-radius: 4px;
-                    margin-bottom: 30px;
-                }
-
-                .product_right_address_insurance {
-                    border: 1px solid #ccc;
-                    padding: 10px 8px 8px;
-                    border-radius: 4px;
-                    margin-bottom: 30px;
-                }
-
-                .filter_screen {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 10px;
-                    width: 30%;
-                }
-
-                .filter_screen select {
-                    width: 35%;
-                }
-
-                .filter_screen strong {
-                    padding-right: 8px;
-                }
-
-                .form_filter {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-
-                .filter_form_btn {
-                    width: 50%;
-                }
-
-                .filter_form_btn_button {
-                    margin-top: 6px;
-                    margin-bottom: 12px;
-                    padding: 8px 16px !important;
-                    font-size: 18px !important;
-                }
-
-                .body_search_title {
-                    padding-top: 20px;
-                }
-
-                .body_search_content {
-                    color: blue;
-                    padding-bottom: 40px;
-                }
+                
+                .container_login_form {
+			        width: 500px !important;
+			        margin: 0 auto;
+			        margin-bottom: 50px;
+			    }
+			    .login_page_title_container {
+			        text-align: center;
+			        margin-top: 20px;
+			        margin-bottom: 20px;
+			        color: #123d69;
+			    }
+			    .btn-form-login-submit {
+			        margin-left: 50%;
+			        transform: translateX(-50%);
+			    }
             </style>

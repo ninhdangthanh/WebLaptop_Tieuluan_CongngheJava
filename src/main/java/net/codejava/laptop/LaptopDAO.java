@@ -205,5 +205,68 @@ public class LaptopDAO {
 	       }
         return laptopWithConfiguration;
     }
+	
+	
+	public List<LaptopDetail> getSearchLaptops(String sttm) {
+		List<LaptopDetail> searchLaptops = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sttm)) {
+        	ResultSet resultSet = stmt.executeQuery();
+	           while (resultSet.next()) {
+	        	   int id = resultSet.getInt("id");
+	            	String name = resultSet.getString("name");
+	            	String price = resultSet.getString("price");
+	            	int price_real = resultSet.getInt("price_real");
+	            	String series = resultSet.getString("series");
+	            	String past_price = resultSet.getString("past_price");
+	            	String cpu = resultSet.getString("cpu");
+	            	String cpu_compact = resultSet.getString("cpu_compact");
+	            	String ram = resultSet.getString("ram");
+	            	String ram_compact = resultSet.getString("ram_compact");
+	            	String memory_compact = resultSet.getString("memory_compact");
+	            	String card = resultSet.getString("card");
+	            	String screen = resultSet.getString("screen");
+	            	String screen_compact = resultSet.getString("screen_compact");
+	            	String link_img = resultSet.getString("link_img");
+	            	String trademark_id = resultSet.getString("trademark_id");
+	            	String trademark_name = resultSet.getString("trademark_name");
+	               
+	            	searchLaptops.add(new LaptopDetail(id, name, price, price_real, series, past_price, cpu,
+	            			cpu_compact, ram, ram_compact, memory_compact, card, screen,
+	            			screen_compact, link_img, trademark_id, trademark_name) );
+	           }
+	       } catch (SQLException ex) {
+	           // handle exception
+	       }
+        return searchLaptops;
+    }
+	
+	public void saveLaptopProduct(String name, String price, int price_real,String series,String past_price,String cpu,String cpu_compact,String ram,String ram_compact,String memory_compact,String card,String screen,String screen_compact,String link_img,int trademark_id) {
+        String sql = "insert into laptop(name, price, price_real, series, past_price, cpu, cpu_compact, ram, ram_compact, memory_compact, card, screen, screen_compact, link_img, trademark_id) values \r\n"
+        		+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, price);
+            ps.setInt(3, price_real);
+            ps.setString(4, series);
+            ps.setString(5, past_price);
+            ps.setString(6, cpu);
+            ps.setString(7, cpu_compact);
+            ps.setString(8, ram);
+            ps.setString(9, ram_compact);
+            ps.setString(10, memory_compact);
+            ps.setString(11, card);
+            ps.setString(12, screen);
+            ps.setString(13, screen_compact);
+            ps.setString(14, link_img);
+            ps.setInt(15, trademark_id);
+            System.out.println(ps);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

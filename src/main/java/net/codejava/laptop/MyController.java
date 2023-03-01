@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.codejava.model.LaptopDetail;
+import net.codejava.model.User;
 
 @Controller
 public class MyController {
 	
 	@Autowired
     private LaptopDAO laptopdao;
+	
+	
 	
 	@RequestMapping("/")
     public String home(ModelMap map) {
@@ -135,7 +138,7 @@ public class MyController {
     }
     
 
-    @RequestMapping(name = "/all_product", method=RequestMethod.POST)
+    @RequestMapping(value = "/all_product", method=RequestMethod.POST, params="allLaptopPost")
     public String allLaptopPost(ModelMap map,
     		@RequestParam(value = "laptop", required = false) String laptop,
     		@RequestParam(value = "screen", required = false) String screen,
@@ -182,10 +185,30 @@ public class MyController {
     	
         return "all_product";
     }
-
     
-    @RequestMapping("/search_laptop")
-    public String searchLaptop(ModelMap map) {
-        return "search_laptop";
+    
+    @RequestMapping(value = "/search_laptop", method = RequestMethod.POST, params = "searchingPage")
+    public String searchLaptop(ModelMap map,
+    		@RequestParam(value = "searchingPage", required = false) String searchInputValue) {
+        
+    	map.addAttribute("searchInputValue", searchInputValue);
+    	
+    	String sttm = "select lt.*, tm.trademark_name from laptop lt inner join trademark tm on tm.id = lt.trademark_id where LOWER(lt.name) like LOWER('%"+ searchInputValue +"%')";
+    	
+    	List<LaptopDetail> searchLaptops = laptopdao.getSearchLaptops(sttm);
+    	
+    	map.addAttribute("searchLaptops", searchLaptops);
+    	
+    	return "search_laptop";
     }
+    
+    @RequestMapping("/login")
+    public String loginToManagementLaptopPage(ModelMap map) {
+    	return "login";
+    }
+    
+    
+    // WORKING WITH USER
+    
+
 }
