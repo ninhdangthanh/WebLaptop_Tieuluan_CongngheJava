@@ -162,7 +162,8 @@ public class UserController {
     
     @RequestMapping("/admin_user_dashboard")
     public String AdminUserDashboard(ModelMap map,
-    		@RequestParam(value = "deleteUserSuccess", required = false) String deleteUserSuccess) {
+    		@RequestParam(value = "deleteUserSuccess", required = false) String deleteUserSuccess,
+    		@RequestParam(value = "editUserSuccess", required = false) String editUserSuccess) {
     	
     	List<User> listUser = userDAO.getAllUser();
     	map.addAttribute("adminUser", listUser.get(0));
@@ -171,6 +172,9 @@ public class UserController {
     	
     	if(deleteUserSuccess != null) {
     		map.addAttribute("deleteUserSuccessOk", "Xóa User thành công");
+    	}
+    	if(editUserSuccess != null) {
+    		map.addAttribute("editUserSuccessOk", "Chỉnh sửa thông tin User thành công");
     	}
     	
     	return "admin_user_dashboard";
@@ -204,6 +208,29 @@ public class UserController {
     	return "admin_user_dashboard_delete";
     }
     
+    @RequestMapping("/admin_user_dashboard_edit")
+    public String AdminUserDashboardEdit(ModelMap map,
+    		@RequestParam("id") String id) {
+    	
+    	User userEdit = userDAO.getUserDelete(id);
+    	map.addAttribute("userEdit", userEdit);
+    	
+    	return "admin_user_dashboard_edit";
+    }
+    
+    
+    @RequestMapping("/admin_user_edit")
+    public String AdminUserDashboardEditConfirm(ModelMap map,
+    		@RequestParam("id") String id,
+    		@RequestParam("email") String email,
+    		@RequestParam("password") String password) {
+    	
+    	userDAO.updateUser(email, password);
+    	
+    	map.addAttribute("editUserSuccess", "Chỉnh sửa User thành công");
+    	
+    	return "redirect:/admin_user_dashboard";
+    }
     
     @RequestMapping("/admin_user_dashboard_delete_confirm")
     public String AdminUserDashboardDeleteConfirm(ModelMap map,

@@ -78,17 +78,6 @@ public class UserDAO {
     }
 	
 	
-//	public void getUserDelete(String id) {
-//		String sql = "select * from user where id = ? limit 1";
-//        try (Connection conn = dataSource.getConnection();
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//            ps.setString(1, id);
-//            ps.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-	
 	public User getUserDelete(String idUser) {
         User userDel = null;
         try (Connection conn = dataSource.getConnection();
@@ -120,4 +109,19 @@ public class UserDAO {
         }
     }
 	
+	
+	public void updateUser(String email, String password) {
+		String sql = "update user set password = ? where email = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, password);
+            ps.setString(2, email);
+            System.out.println(sql);
+            System.out.println(conn);
+            System.out.println(ps);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
