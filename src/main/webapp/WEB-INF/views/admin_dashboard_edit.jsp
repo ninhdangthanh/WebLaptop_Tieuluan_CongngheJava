@@ -15,7 +15,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Admin Dashboard Add</title>
+    <title>Admin Dashboard Edit</title>
 </head>
 
 <body>
@@ -42,16 +42,21 @@
         </div>
         <div class="right_admin_page">
             <div class="right_admin_page_header">
-                <h2>THÊM SẢN PHẨM</h2>
+                <h2>CHỈNH SỬA SẢN PHẨM</h2>
             </div>
             
             <div class="right_list_form">
             <h3 class="add_product_success">${addProductStatus }</h3>
-                <form action="${pageContext.request.contextPath}/admin_dashboard_add" method="post">
+                <form action="${pageContext.request.contextPath}/admin_dashboard_edit" method="post">
+                    <div class="mb-3">
+                        <input hidden required="" type="number" placeholder="" class="form-control"
+                            name="id" id="id">
+
+                    </div>
                     <div class="mb-3">
                         <label class="form-label"><strong>Thương hiệu</strong></label>
                         <select name="trademark_name" id="trademark_name" class="form-select">
-                            <option selected value="Dell">Dell</option>
+                            <option value="Dell">Dell</option>
                             <option value="Acer">Acer</option>
                             <option value="Asus">Asus</option>
                         </select>
@@ -59,9 +64,10 @@
                     <div class="mb-3">
                         <label class="form-label"><strong>Series</strong></label>
                         <select name="series" id="series" class="form-select">
-                            <option selected value="Latitude">Latitude</option>
+                            <option value="Latitude">Latitude</option>
                             <option value="Inspiron">Inspiron</option>
                             <option value="Vostro">Vostro</option>
+                            <option selected value='Zenbook'>Zenbook</option><option value='VivoBook'>VivoBook</option><option value='ROG'>ROG</option><option selected value='Aspire'>Aspire</option><option value='Nitro'>Nitro</option><option value='Swift'>Swift</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -78,14 +84,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><strong>Giá cũ</strong></label>
-                        <input required="" type="number" placeholder="Nhập Giá cũ (number)" class="form-control"
+                        <input required="" type="text" placeholder="Nhập Giá cũ (number)" class="form-control"
                             name="past_price" id="past_price">
 
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><strong>CPU</strong></label>
 						<select name="cpu_compact" id="cpu_compact" class="form-select">
-                            <option selected value="Core i3">Core i3</option>
+                            <option value="Core i3">Core i3</option>
                             <option value="Core i5">Core i5</option>
                             <option value="Core i7">Core i7</option>
                         </select>
@@ -101,14 +107,14 @@
                     <div class="mb-3">
                         <label class="form-label"><strong>Memory</strong></label>
 						<select name="memory_compact" id="memory_compact" class="form-select">
-                            <option selected value="256GB">256 GB</option>
+                            <option value="256GB">256 GB</option>
                             <option value="512GB">512 GB</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><strong>Screen</strong></label>
 						<select name="screen_compact" id="screen_compact" class="form-select">
-                            <option selected value="14inch">14 Inch</option>
+                            <option value="14inch">14 Inch</option>
                             <option value="15.6inch">15.6 Inch</option>
                         </select>
                     </div>
@@ -118,7 +124,7 @@
                             name="link_img" id="link_img">
 
                     </div>
-                    <button type="submit" class="btn btn-primary btn-form-login-submit">Thêm</button>
+                    <button type="submit" class="btn btn-primary btn-form-login-submit">Lưu chỉnh sửa</button>
                 </form>
             </div>
         </div>
@@ -387,6 +393,7 @@ th, td {
 
 
 <script>
+
 function StartFunc() {
     var selectedValue = document.getElementById("trademark_name").value;
     if (selectedValue == "Dell") {
@@ -401,4 +408,21 @@ function StartFunc() {
     document.getElementById('trademark_name').onchange = function () {
     	StartFunc()
     }
-</script>
+    
+    
+    // edit 
+    document.getElementById("cpu_compact").value = "${laptopEdit.getCpu_compact()}";
+    document.getElementById("ram_compact").value = "${laptopEdit.getRam_compact()}";
+    document.getElementById("memory_compact").value = "${laptopEdit.getMemory_compact()}";
+    document.getElementById("screen_compact").value = "${laptopEdit.getScreen_compact()}";
+    
+    document.getElementById("trademark_name").value = "${laptopEdit.getTrademark_name()}";
+    document.getElementById("series").value = "${laptopEdit.getSeries()}";
+    
+    document.getElementById("name").value = "${laptopEdit.getName()}";
+    document.getElementById("price").value = "${laptopEdit.getPrice_real()}";
+    document.getElementById("past_price").value = "${laptopEdit.getPast_price()}";
+    document.getElementById("link_img").value = "${laptopEdit.getLink_img()}";
+    document.getElementById("id").value = "${laptopEdit.getId()}";
+    
+</script> 

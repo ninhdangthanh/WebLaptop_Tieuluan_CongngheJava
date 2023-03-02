@@ -261,7 +261,48 @@ public class LaptopDAO {
             ps.setString(13, screen_compact);
             ps.setString(14, link_img);
             ps.setInt(15, trademark_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public void saveEditLaptopProduct(String name, String price, int price_real,String series,String past_price,String cpu,String cpu_compact,String ram,String ram_compact,String memory_compact,String card,String screen,String screen_compact,String link_img,int trademark_id, int id) {
+        String sql = "update laptop set name = ?, price = ?, price_real = ?, series = ?, past_price = ?, cpu = ?, cpu_compact = ?, ram = ?, ram_compact = ?, memory_compact = ?, card = ?, screen = ?, screen_compact = ?, link_img = ?, trademark_id = ? where id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, price);
+            ps.setInt(3, price_real);
+            ps.setString(4, series);
+            ps.setString(5, past_price);
+            ps.setString(6, cpu);
+            ps.setString(7, cpu_compact);
+            ps.setString(8, ram);
+            ps.setString(9, ram_compact);
+            ps.setString(10, memory_compact);
+            ps.setString(11, card);
+            ps.setString(12, screen);
+            ps.setString(13, screen_compact);
+            ps.setString(14, link_img);
+            ps.setInt(15, trademark_id);
+            //id
+            ps.setInt(16, id);
             System.out.println(ps);
+            System.out.println(sql);
+            System.out.println(conn);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	
+	public void deleteLaptopProduct(int id) {
+		String sql = "delete from laptop where id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -56,7 +56,10 @@ public class UserController {
     
     @RequestMapping("/admin_dashboard")
     public String adminDashboard(ModelMap map, HttpServletRequest request,
-    		@RequestParam(value = "searchingPage", required = false) String searchInputValue) {
+    		@RequestParam(value = "searchingPage", required = false) String searchInputValue,
+    		@RequestParam(value = "deleteLaptopSuccess", required = false) String deleteLaptopSuccess,
+    		@RequestParam(value = "editProductStatus", required = false) String editProductStatus
+    		) {
     	
     	HttpSession session = request.getSession();
         String isAdmin = (String) session.getAttribute("isAdmin");
@@ -80,6 +83,12 @@ public class UserController {
     	List<LaptopDetail> listLaptop = laptopdao.getSearchLaptops(sttm);
     	
     	map.addAttribute("LaptopInAdminPage", listLaptop);
+    	if(deleteLaptopSuccess != null) {
+    		map.addAttribute("deleteLaptopSuccessOk", "Xóa thành công");
+    	}
+    	if(editProductStatus != null) {
+    		map.addAttribute("editProductStatus", "Chỉnh sửa thành công");
+    	}
     	
     	return "admin_dashboard";
     }
@@ -136,6 +145,74 @@ public class UserController {
     	}
     	
     	return "admin_dashboard_add";
+    }
+    
+    
+    @RequestMapping("/admin_page_logout")
+    public String AdminPageLogout(ModelMap map, HttpServletRequest request) {
+    	HttpSession session = request.getSession();
+        String isAdmin = (String) session.getAttribute("isAdmin");
+        if(isAdmin != null) {
+        	session.invalidate();
+        }
+        
+        return "redirect:/";
+    }
+    
+    
+    @RequestMapping("/admin_user_dashboard")
+    public String AdminUserDashboard(ModelMap map,
+    		@RequestParam(value = "deleteUserSuccess", required = false) String deleteUserSuccess) {
+    	
+    	List<User> listUser = userDAO.getAllUser();
+    	map.addAttribute("adminUser", listUser.get(0));
+    	listUser.remove(0);
+    	map.addAttribute("listUser", listUser);
+    	
+    	if(deleteUserSuccess != null) {
+    		map.addAttribute("deleteUserSuccessOk", "Xóa User thành công");
+    	}
+    	
+    	return "admin_user_dashboard";
+    }
+    
+    @RequestMapping("/admin_user_dashboard_add")
+    public String AdminUserDashboardAdd(ModelMap map) {
+    	
+    	return "admin_user_dashboard_add";
+    }
+    
+    @RequestMapping(value = "/admin_user_add", method = RequestMethod.POST)
+    public String AdminUserDashboardAddPost(ModelMap map,
+    		@RequestParam("email") String email,
+    		@RequestParam("password") String password) {
+    	
+    	userDAO.saveUserManager(email, password, "manager");
+    	map.addAttribute("addUserStatus", "Thêm tài khoản User thành công");
+    	
+    	return "admin_user_dashboard_add";
+    }
+    
+    
+    @RequestMapping("/admin_user_dashboard_delete")
+    public String AdminUserDashboardDelete(ModelMap map,
+    		@RequestParam("id") String id) {
+    	
+    	User userDel = userDAO.getUserDelete(id);
+    	map.addAttribute("userDel", userDel);
+    	
+    	return "admin_user_dashboard_delete";
+    }
+    
+    
+    @RequestMapping("/admin_user_dashboard_delete_confirm")
+    public String AdminUserDashboardDeleteConfirm(ModelMap map,
+    		@RequestParam("id") String id) {
+    	
+    	userDAO.deleteUser(id);
+    	map.addAttribute("deleteUserSuccess", "Xóa User thành công");
+    	
+    	return "redirect:/admin_user_dashboard";
     }
     
     

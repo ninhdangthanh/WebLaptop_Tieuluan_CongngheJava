@@ -30,7 +30,7 @@
             </a>
             
             <c:if test="${isAdmin == true}">
-            	<a href="" class="left_list_item">
+            	<a href="${pageContext.request.contextPath}/admin_user_dashboard" class="left_list_item">
 	                <i class="fa-solid fa-user"></i>
 	                Tài khoản quản lý
 	            </a>
@@ -52,6 +52,9 @@
                 </div>
                 <a class="add_product_button" href="admin_dashboard_add">Thêm sản phẩm</a>
             </div>
+            <div class="marginTop100"></div>
+            <h3 class="deleteLaptopSuccess">${deleteLaptopSuccessOk }</h3>
+            <h3 class="deleteLaptopSuccess">${editProductStatus }</h3>
             <div class="right_list_product">
                 <c:forEach items="${LaptopInAdminPage}" var="laptop">
                      <div href="" class="list_product_item">
@@ -221,7 +224,6 @@
     display: flex;
     flex-wrap: wrap;
     padding: 30px;
-    margin-top: 100px;
 }
 
 .right_list_form {
@@ -316,6 +318,15 @@ th, td {
 .img_product_delete_page {
     height: 200px;
     background-size: contain;
+}
+
+.deleteLaptopSuccess {
+	color: blue;
+	padding-left: 30px
+}
+
+.marginTop100 {
+	margin-top: 120px;
 }
 
 </style>

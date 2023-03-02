@@ -26,12 +26,12 @@
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAABkCAMAAABqx9+wAAAAq1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Nr6iZAAAAOHRSTlMABPsHC/iCLCYV5YbTvj2j3knisKwiEMUxtaj0Q9kdGe1bi06QXzV0V5XpOZ59ZPGZznhqUrnJb0+y2lcAABGJSURBVHja7Jp9f5owEMcv8iRaRYagIGpBrFjFqtWa9//Kdjke4gbuM9d/NrtfW5pcYuS+3F3SB/gdMQYobxxla8vxfd9xHP/sO8G++x7O8xnw9URU1DCzHEvfhYbHSrvqbtLjfhgk0ewLshHueune376P1dKkCLEShJvGTrBqfy00wtX+2l/bBEWpe67ktvHRCZbql0Ej3Fw6QaoKAmQxx4vdsdvd75OufonCNvFidH1Jzt3Zl0AjXLyc10ZBRd1c1sPhNs526QJ1ii76Ohha3agNYhRnezj7C6BhAFEvmeUJZEZ7xzrargJSxUbVDZxuyHC+GNv14gdPKIa54VsugEiTxdaPbbMYMI1NuDid7P7YVYHU3m397hhoLluNdo9MRgGIeyG5ah79fVF7jSj2p2+8lNb5sFb5OWb+PhymOU9z67sPS4bBZpTlWLq9bEZl97R+IhyTb4eeMxyeR9Nn6r+djy+A6m97S0ZI7Y8LPKQYwHE0Fj6ybLRShcW2BIWOoy/G8yoaVLe/2x9aOHA4igo8ToqDnmINVXg8IY/hlsIlHenCQfMiYmWUbVR5GJa5Mku3Hc5bw/Aa7O78eGQUmH28i29mMHSx72WvnE91o0ZEdtVFgHFzttFQojEfDowCL08hXiH9iAD13sFgSRWiAI0iu9tFfP4Yew/6M6UC9sEVabT2TVGDPxCLXaPSxMbLcL9K1AdkknNZHEzk4vV0QMWcD6LfCQCaMl/jdPsRw4XixUMuxuGE7faBQuB3HWVAARY/IBkFNhQv4ZOB7XTCB+EdXtLULuc989HIMHCfRH2xD3Pk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"
                     alt="">
             </a>
-            <a href="${pageContext.request.contextPath}/admin_dashboard" class="left_list_item active">
+            <a href="${pageContext.request.contextPath}/admin_dashboard" class="left_list_item ">
                 <i class="fa-solid fa-house"></i>
                 Danh sách sản phẩm
             </a>
             <c:if test="${isAdmin == true}">
-            	<a href="${pageContext.request.contextPath}/admin_user_dashboard" class="left_list_item">
+            	<a href="${pageContext.request.contextPath}/admin_user_dashboard" class="left_list_item active">
 	                <i class="fa-solid fa-user"></i>
 	                Tài khoản quản lý
 	            </a>
@@ -42,82 +42,23 @@
         </div>
         <div class="right_admin_page">
             <div class="right_admin_page_header">
-                <h2>THÊM SẢN PHẨM</h2>
+                <h2>THÊM QUẢN LÝ</h2>
             </div>
             
             <div class="right_list_form">
-            <h3 class="add_product_success">${addProductStatus }</h3>
-                <form action="${pageContext.request.contextPath}/admin_dashboard_add" method="post">
+            <h3 class="add_product_success">${addUserStatus }</h3>
+                <form action="${pageContext.request.contextPath}/admin_user_add" method="post">
                     <div class="mb-3">
-                        <label class="form-label"><strong>Thương hiệu</strong></label>
-                        <select name="trademark_name" id="trademark_name" class="form-select">
-                            <option selected value="Dell">Dell</option>
-                            <option value="Acer">Acer</option>
-                            <option value="Asus">Asus</option>
-                        </select>
+                        <label class="form-label"><strong>Email</strong></label>
+                        <input minlength="14" required="" type="text" placeholder="Nhập Email" class="form-control"
+                            name="email" id="email">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label"><strong>Series</strong></label>
-                        <select name="series" id="series" class="form-select">
-                            <option selected value="Latitude">Latitude</option>
-                            <option value="Inspiron">Inspiron</option>
-                            <option value="Vostro">Vostro</option>
-                        </select>
+                        <label class="form-label"><strong>Password</strong></label>
+                        <input minlength="6" required="" type="text" placeholder="Nhập Password" class="form-control"
+                            name="password" id="password">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Tên máy</strong></label>
-                        <input required="" type="text" placeholder="Nhập tên máy (text)" class="form-control"
-                            name="name" id="name">
 
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Giá</strong></label>
-                        <input required="" type="number" placeholder="Nhập Giá (number)" class="form-control"
-                            name="price" id="price">
-
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Giá cũ</strong></label>
-                        <input required="" type="number" placeholder="Nhập Giá cũ (number)" class="form-control"
-                            name="past_price" id="past_price">
-
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>CPU</strong></label>
-						<select name="cpu_compact" id="cpu_compact" class="form-select">
-                            <option selected value="Core i3">Core i3</option>
-                            <option value="Core i5">Core i5</option>
-                            <option value="Core i7">Core i7</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Ram</strong></label>
-						<select name="ram_compact" id="ram_compact" class="form-select">
-                            <option selected value="4GB">4GB</option>
-                            <option value="8GB">8GB</option>
-                            <option value="16GB">16GB</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Memory</strong></label>
-						<select name="memory_compact" id="memory_compact" class="form-select">
-                            <option selected value="256GB">256 GB</option>
-                            <option value="512GB">512 GB</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Screen</strong></label>
-						<select name="screen_compact" id="screen_compact" class="form-select">
-                            <option selected value="14inch">14 Inch</option>
-                            <option value="15.6inch">15.6 Inch</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Link Image</strong></label>
-                        <input required="" type="text" placeholder="Nhập Link image (text)" class="form-control"
-                            name="link_img" id="link_img">
-
-                    </div>
                     <button type="submit" class="btn btn-primary btn-form-login-submit">Thêm</button>
                 </form>
             </div>
@@ -386,19 +327,3 @@ th, td {
 </style>
 
 
-<script>
-function StartFunc() {
-    var selectedValue = document.getElementById("trademark_name").value;
-    if (selectedValue == "Dell") {
-        document.getElementById("series").innerHTML = "<option selected value='Latitude'>Latitude</option><option value='Inspiron'>Inspiron</option><option value='Vostro'>Vostro</option>"
-    } else if (selectedValue == "Acer") {
-        document.getElementById("series").innerHTML = "<option selected value='Aspire'>Aspire</option><option value='Nitro'>Nitro</option><option value='Swift'>Swift</option>"
-    } else {
-        document.getElementById("series").innerHTML = "<option selected value='Zenbook'>Zenbook</option><option value='VivoBook'>VivoBook</option><option value='ROG'>ROG</option>"
-    }
-}
-
-    document.getElementById('trademark_name').onchange = function () {
-    	StartFunc()
-    }
-</script>
