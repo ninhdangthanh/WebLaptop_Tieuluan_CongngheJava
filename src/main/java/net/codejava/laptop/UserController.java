@@ -2,6 +2,7 @@ package net.codejava.laptop;
 
 import java.util.List;
 
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,12 +56,13 @@ public class UserController {
 	}
     
     
-    @RequestMapping("/admin_dashboard")
+    @GetMapping("/admin_dashboard")
     public String adminDashboard(ModelMap map, HttpServletRequest request,
     		@RequestParam(value = "searchingPage", required = false) String searchInputValue,
     		@RequestParam(value = "deleteLaptopSuccess", required = false) String deleteLaptopSuccess,
     		@RequestParam(value = "editProductStatus", required = false) String editProductStatus
     		) {
+    	
     	
     	HttpSession session = request.getSession();
         String isAdmin = (String) session.getAttribute("isAdmin");
@@ -90,7 +93,7 @@ public class UserController {
     		map.addAttribute("editProductStatus", "Chỉnh sửa thành công");
     	}
     	
-    	return "admin_dashboard";
+    	return isLoginToAdminPage(request, "admin_dashboard");
     }
     
     @RequestMapping(value = "/admin_dashboard", method = RequestMethod.POST, params = "searchingPageAdmin")
@@ -125,7 +128,7 @@ public class UserController {
     	System.out.println(listLaptop);
     	map.addAttribute("LaptopInAdminPage", listLaptop);
     	
-    	return "admin_dashboard";
+    	return isLoginToAdminPage(request, "admin_dashboard");
     }
     
     
@@ -144,7 +147,7 @@ public class UserController {
     		map.addAttribute("isAdmin", false);
     	}
     	
-    	return "admin_dashboard_add";
+    	return isLoginToAdminPage(request, "admin_dashboard_add");
     }
     
     
@@ -156,12 +159,13 @@ public class UserController {
         	session.invalidate();
         }
         
-        return "redirect:/";
+        
+        return isLoginToAdminPage(request, "redirect:/");
     }
     
     
     @RequestMapping("/admin_user_dashboard")
-    public String AdminUserDashboard(ModelMap map,
+    public String AdminUserDashboard(ModelMap map, HttpServletRequest request, 
     		@RequestParam(value = "deleteUserSuccess", required = false) String deleteUserSuccess,
     		@RequestParam(value = "editUserSuccess", required = false) String editUserSuccess) {
     	
@@ -177,50 +181,50 @@ public class UserController {
     		map.addAttribute("editUserSuccessOk", "Chỉnh sửa thông tin User thành công");
     	}
     	
-    	return "admin_user_dashboard";
+    	return isLoginToAdminPage(request, "admin_user_dashboard");
     }
     
     @RequestMapping("/admin_user_dashboard_add")
-    public String AdminUserDashboardAdd(ModelMap map) {
+    public String AdminUserDashboardAdd(ModelMap map, HttpServletRequest request) {
     	
-    	return "admin_user_dashboard_add";
+    	return isLoginToAdminPage(request, "admin_user_dashboard_add");
     }
     
     @RequestMapping(value = "/admin_user_add", method = RequestMethod.POST)
-    public String AdminUserDashboardAddPost(ModelMap map,
+    public String AdminUserDashboardAddPost(ModelMap map, HttpServletRequest request,
     		@RequestParam("email") String email,
     		@RequestParam("password") String password) {
     	
     	userDAO.saveUserManager(email, password, "manager");
     	map.addAttribute("addUserStatus", "Thêm tài khoản User thành công");
     	
-    	return "admin_user_dashboard_add";
+    	return isLoginToAdminPage(request, "admin_user_dashboard_add");
     }
     
     
     @RequestMapping("/admin_user_dashboard_delete")
-    public String AdminUserDashboardDelete(ModelMap map,
+    public String AdminUserDashboardDelete(ModelMap map, HttpServletRequest request,
     		@RequestParam("id") String id) {
     	
     	User userDel = userDAO.getUserDelete(id);
     	map.addAttribute("userDel", userDel);
     	
-    	return "admin_user_dashboard_delete";
+    	return isLoginToAdminPage(request, "admin_user_dashboard_delete");
     }
     
     @RequestMapping("/admin_user_dashboard_edit")
-    public String AdminUserDashboardEdit(ModelMap map,
+    public String AdminUserDashboardEdit(ModelMap map, HttpServletRequest request,
     		@RequestParam("id") String id) {
     	
     	User userEdit = userDAO.getUserDelete(id);
     	map.addAttribute("userEdit", userEdit);
     	
-    	return "admin_user_dashboard_edit";
+    	return isLoginToAdminPage(request, "admin_user_dashboard_edit");
     }
     
     
     @RequestMapping("/admin_user_edit")
-    public String AdminUserDashboardEditConfirm(ModelMap map,
+    public String AdminUserDashboardEditConfirm(ModelMap map, HttpServletRequest request,
     		@RequestParam("id") String id,
     		@RequestParam("email") String email,
     		@RequestParam("password") String password) {
@@ -229,19 +233,34 @@ public class UserController {
     	
     	map.addAttribute("editUserSuccess", "Chỉnh sửa User thành công");
     	
-    	return "redirect:/admin_user_dashboard";
+    	return isLoginToAdminPage(request, "redirect:/admin_user_dashboard");
     }
     
     @RequestMapping("/admin_user_dashboard_delete_confirm")
-    public String AdminUserDashboardDeleteConfirm(ModelMap map,
+    public String AdminUserDashboardDeleteConfirm(ModelMap map, HttpServletRequest request, 
     		@RequestParam("id") String id) {
     	
     	userDAO.deleteUser(id);
     	map.addAttribute("deleteUserSuccess", "Xóa User thành công");
     	
-    	return "redirect:/admin_user_dashboard";
+    	return isLoginToAdminPage(request, "redirect:/admin_user_dashboard");
     }
     
+    
+    public String isLoginToAdminPage(HttpServletRequest request, String returnPage) {
+    	
+    	HttpSession session = request.getSession();
+        String isAdmin = (String) session.getAttribute("isAdmin");
+    	if(isAdmin != null) {
+    		if(isAdmin.equals("True")) {
+        		return returnPage;
+        	} else {
+        		return "redirect:/login";
+        	}
+    	} else {
+    		return "redirect:/login";
+    	}
+    }
     
     
 }
